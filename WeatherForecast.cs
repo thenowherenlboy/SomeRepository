@@ -12,4 +12,4 @@ namespace TeamsApi
 
         public string Summary { get; set; }
     }
-}
+}// this is a comment. It changes the .git HEAD
