@@ -27,6 +27,14 @@ namespace TeamsApi.Controllers
             return await _context.Players.ToListAsync();
         }
 
+        /* [HttpGet{"LastName"}]
+            public async Task<ActionResult<IEnumerable<Player>>> GetByLastName(string name)
+            {
+                List<Players>
+                IEnumerable<Player> playersByLastName = 
+                    
+            }
+ */
         // GET: api/Player/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Player>> GetPlayer(long id)
