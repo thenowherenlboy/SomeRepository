@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Indianapolis Iguanas",
+        "location": "Indianapolis",
+        "playerCount": 0
+    },
+    {
+        "id": 2,
+        "name": "Anaheim Anteaters",
+        "location": "Anaheim",
+        "playerCount": 0
+    },
+    {
+        "id": 3,
+        "name": "Chatanooga Chimpanzees",
+        "location": "Chatanooga",
+        "playerCount": 0
+    }
+]

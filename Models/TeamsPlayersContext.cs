@@ -8,7 +8,10 @@ namespace TeamsApi.Models
         {
 
         }
-        public DbSet<Team> Teams { get; set; }
+        public DbSet<Team> Teams { 
+            get; 
+            set;
+        }
     }
 
     public class PlayerContext: DbContext

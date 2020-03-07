@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "teamId": 2,
+        "firstName": "Larry",
+        "lastName": "Smith"
+    },
+    {
+        "id": 2,
+        "teamId": 2,
+        "firstName": "Norman",
+        "lastName": "Schmoctkiss"
+    },
+    {
+        "id": 3,
+        "teamId": 1,
+        "firstName": "George",
+        "lastName": "Schmoctkiss"
+    },
+    {
+        "id": 4,
+        "teamId": 1,
+        "firstName": "Melvin",
+        "lastName": "Smith"
+    },
+    {
+        "id": 5,
+        "teamId": 1,
+        "firstName": "Zachary",
+        "lastName": "Smith"
+    },
+    {
+        "id": 6,
+        "teamId": 1,
+        "firstName": "Stanley",
+        "lastName": "Butkis"
+    },
+    {
+        "id": 7,
+        "teamId": 1,
+        "firstName": "George",
+        "lastName": "Foremangrills"
+    },
+    {
+        "id": 8,
+        "teamId": 2,
+        "firstName": "Ethan",
+        "lastName": "Foremangrills"
+    },
+    {
+        "id": 9,
+        "teamId": 2,
+        "firstName": "Hezikiah",
+        "lastName": "Smith"
+    },
+    {
+        "id": 10,
+        "teamId": 3,
+        "firstName": "Snidely",
+        "lastName": "Jones"
+    }
+]

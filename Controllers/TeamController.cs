@@ -41,6 +41,26 @@ namespace TeamsApi.Controllers
             return team;
         }
 
+        // GET: api/Team/bylocation
+        [HttpGet("bylocation")]
+        public async Task<ActionResult<IEnumerable<Team>>> GetTeamByLocation()
+        {
+            List<Team> teamList = new List<Team>();
+            teamList = await _context.Teams.ToListAsync();
+
+            return teamList.ToList().OrderBy(t => t.Location).ToList();
+        }
+
+        // GET: api/Team/byname
+        [HttpGet("byname")]
+        public async Task<ActionResult<IEnumerable<Team>>> GetTeamsByName()
+        {
+            List<Team> teamList = new List<Team>();
+            teamList = await _context.Teams.ToListAsync();
+
+            return teamList.ToList().OrderBy(t => t.Name).ToList();
+        }
+
         // PUT: api/Team/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -79,6 +99,11 @@ namespace TeamsApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Team>> PostTeam(Team team)
         {
+            if (_context.Teams.Any(t => t.Name == team.Name) &&
+                 _context.Teams.Any(t => t.Location == team.Location))
+                 {
+                     return BadRequest();
+                 }
             _context.Teams.Add(team);
             await _context.SaveChangesAsync();
 

@@ -6,18 +6,21 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TeamsApi.Models;
+using TeamsApi.Controllers;
 
 namespace TeamsApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/player")]
     [ApiController]
     public class PlayerController : ControllerBase
     {
         private readonly PlayerContext _context;
+        private readonly TeamContext _teamContext;
 
-        public PlayerController(PlayerContext context)
+        public PlayerController(PlayerContext context, TeamContext teamContext)
         {
             _context = context;
+            _teamContext = teamContext;
         }
 
         // GET: api/Player
@@ -27,14 +30,43 @@ namespace TeamsApi.Controllers
             return await _context.Players.ToListAsync();
         }
 
-        /* [HttpGet{"LastName"}]
-            public async Task<ActionResult<IEnumerable<Player>>> GetByLastName(string name)
+        // GET: api/Player/lastname/Smith
+        [HttpGet("lastname/{lastname}")]
+        public async Task<ActionResult<IEnumerable<Player>>> GetPlayersByLastName(string lastname)
+        {
+            List<Player> playerList = new List<Player>();
+            playerList = await _context.Players.ToListAsync();
+
+            IEnumerable<Player> playersByLastName = 
+                from p in playerList
+                where p.LastName == lastname
+                select p;
+
+            if (playersByLastName == null) 
             {
-                List<Players>
-                IEnumerable<Player> playersByLastName = 
-                    
+                return NotFound();
             }
- */
+
+            return playersByLastName.ToList();
+                
+        }
+        // GET: api/Player/team/2
+        [HttpGet("team/{id}")]
+        public async Task<ActionResult<IEnumerable<Player>>> GetTeamRoster(long id)
+        {
+            List<Player> playerList = new List<Player>();
+            playerList = await _context.Players.ToListAsync();
+
+            IEnumerable<Player> teamRoster = 
+                from p in playerList
+                where p.TeamId == id
+                select p;
+            
+            if (teamRoster == null) return NotFound();
+
+            return teamRoster.ToList().OrderBy(p => p.LastName).ToList();
+        }
+
         // GET: api/Player/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Player>> GetPlayer(long id)
@@ -87,10 +119,15 @@ namespace TeamsApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Player>> PostPlayer(Player player)
         {
+            if(_context.Players.Count(p => p.TeamId == player.TeamId) >= 8)
+            {
+                return BadRequest();
+            }
+         
             _context.Players.Add(player);
-            await _context.SaveChangesAsync();
-
+            await _context.SaveChangesAsync(); 
             return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
+                    
         }
 
         // DELETE: api/Player/5
@@ -112,6 +149,11 @@ namespace TeamsApi.Controllers
         private bool PlayerExists(long id)
         {
             return _context.Players.Any(e => e.Id == id);
+        }
+
+        private bool PlayerExists(string lastName)
+        {
+            return _context.Players.Any(e => e.LastName == lastName);
         }
     }
 }

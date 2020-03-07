@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\job_2\\source\\repos\\TeamsApi\\TeamsApi.csproj": {}
+    "D:\\TeamsApi\\TeamsApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\job_2\\source\\repos\\TeamsApi\\TeamsApi.csproj": {
+    "D:\\TeamsApi\\TeamsApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\job_2\\source\\repos\\TeamsApi\\TeamsApi.csproj",
+        "projectUniqueName": "D:\\TeamsApi\\TeamsApi.csproj",
         "projectName": "TeamsApi",
-        "projectPath": "C:\\Users\\job_2\\source\\repos\\TeamsApi\\TeamsApi.csproj",
+        "projectPath": "D:\\TeamsApi\\TeamsApi.csproj",
         "packagesPath": "C:\\Users\\job_2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\job_2\\source\\repos\\TeamsApi\\obj\\",
+        "outputPath": "D:\\TeamsApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\job_2\\AppData\\Roaming\\NuGet\\NuGet.Config",
